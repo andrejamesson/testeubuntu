@@ -8,6 +8,15 @@ app.get('/', (req, res) => {
   res.sendStatus(200); 
 });
 
+app.post('/msg', (req, res) => {
+    const mensagemRecebida = req.body.mensagem; // Extrai a mensagem do corpo da requisição
+  
+    if (mensagemRecebida) {
+      res.status(200).send(`Mensagem recebida: ${mensagemRecebida}`);
+    } else {
+      res.status(400).send('Nenhuma mensagem encontrada no corpo da requisição.');
+    }
+  });
 // Inicia o servidor
 app.listen(port, () => {
   console.log(`API rodando em http://localhost:${port}`);
